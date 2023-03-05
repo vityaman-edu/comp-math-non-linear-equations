@@ -1,9 +1,13 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from f.parsing import parse
+from f.core import Function
+from solve.method.interval import Interval
 
-if __name__ == '__main__':
-    f = parse('x ^ 3 + 2.64 * x ^ 2 - 5.41 * x - 11.76')
+def plot(
+    filepath: str, 
+    f: Function, 
+    interval: Interval
+) -> None:
     df = f.diff()
 
     figure, axis = plt.subplots(1, 2)
@@ -16,14 +20,13 @@ if __name__ == '__main__':
         axis[i].xaxis.set_ticks_position('bottom')
         axis[i].yaxis.set_ticks_position('left')
 
-    l, r, n = -3, 2, 100
-    x = np.linspace(l, r, n)
+    l, r = interval.left, interval.right
+    x = np.linspace(l, r, 100)
+    
     axis[0].plot(x, df(x))
-    axis[0].set_title(f'f([{l}, {r}])')
+    axis[0].set_title(f'f\'([{l}, {r}])')
 
-    l, r, n = -5, 3, 100
-    x = np.linspace(l, r, n)
     axis[1].plot(x, f(x))
     axis[1].set_title(f'f([{l}, {r}])')
 
-    plt.savefig('res/plot.png')
+    plt.savefig(filepath)
