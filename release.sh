@@ -1,16 +1,18 @@
 
-echo "Starting release..."
+echo "[INFO] Starting release..."
 
-echo "Updating res/plot.png..."
+echo "[INFO] Updating res/plot.png..."
 python3 eq/plot.py
-echo "Successfully updated res/plot.png..."
+echo "[INFO] Successfully updated res/plot.png..."
 
-echo "Press any key to start release..."
+echo "[INFO] Release content:"
+git status
+
+echo "[INFO] Press any key to start release..."
 read -n 1
 
-git checkout trunk
 git add -A
 git commit -m "[release] 1-2 done"
 git push
 
-echo "Successfully released new version"
+echo "[DONE] Successfully released new version"
