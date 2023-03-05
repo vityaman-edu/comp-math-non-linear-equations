@@ -1,17 +1,24 @@
-from sympy import Symbol, Function as SympyFunction
+from sympy import Function as SympyFunction
+from sympy import diff
+from sympy import lambdify
+from sympy.abc import x
 
 
 class Function:
-    def value(self, vars: dict[str, float]) -> float:
+    def __call__(self, x: float) -> float:
+        raise NotImplementedError()
+    
+    def diff(self) -> 'Function':
         raise NotImplementedError()
 
 
 class SympyPoweredFunction(Function):
     def __init__(self, func: SympyFunction) -> None:
         self.func = func
+        self.lmbd = lambdify(x, self.func)
 
-    def value(self, vars: dict[str, float]) -> float:
-        func = self.func
-        for var, value in vars.items():
-            func = func.subs(Symbol(var), value)
-        return float(func.evalf())
+    def __call__(self, x: float) -> float:
+        return self.lmbd(x)
+    
+    def diff(self) -> Function:
+        return SympyPoweredFunction(diff(self.func))

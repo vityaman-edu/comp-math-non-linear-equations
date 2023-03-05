@@ -12,7 +12,7 @@ echo "[INFO] Press any key to start release..."
 read -n 1
 
 git add -A
-git commit -m "[release] expression parsing"
+git commit -m "[release] plots for parsed functions"
 git push
 
 echo "[DONE] Successfully released new version"

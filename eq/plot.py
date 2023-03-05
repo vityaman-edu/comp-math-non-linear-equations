@@ -1,9 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from common import f, df
-
+from f.parsing import parse
 
 if __name__ == '__main__':
+    f = parse('x ^ 3 + 2.64 * x ^ 2 - 5.41 * x - 11.76')
+    df = f.diff()
+
     figure, axis = plt.subplots(1, 2)
 
     for i in range(2):    
@@ -17,7 +19,7 @@ if __name__ == '__main__':
     l, r, n = -3, 2, 100
     x = np.linspace(l, r, n)
     axis[0].plot(x, df(x))
-    axis[0].set_title(f'f\'([{l}, {r}])')
+    axis[0].set_title(f'f([{l}, {r}])')
 
     l, r, n = -5, 3, 100
     x = np.linspace(l, r, n)

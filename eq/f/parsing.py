@@ -6,6 +6,7 @@ def parse(input: str) -> Function:
     return SympyPoweredFunction(
         parse_expr(
             s = input, 
-            evaluate = False
+            evaluate = False,
+            transformations = 'all'
         )
     )
