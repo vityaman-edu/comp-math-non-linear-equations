@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from f.core import Function
-from solve.method.interval import Interval
+from eq.f.core import Function
+from eq.solve.method.interval import Interval
 
 def plot(
     filepath: str, 

@@ -1,9 +1,9 @@
-from f.parsing import parse
-from plot import plot
-from solve.method.interval import Interval
-from solve.method import half
+from eq.f.parsing import parse
+from eq.plot import plot
+from eq.solve.method.interval import Interval
+from eq.solve.method import half
 
-if __name__ == '__main__':
+def example():
     f = 'x ^ 3 + 2.64 * x ^ 2 - 5.41 * x - 11.76'
     f = parse(f)
 
@@ -29,4 +29,3 @@ if __name__ == '__main__':
                 )
             ))
             print(file=file)
-

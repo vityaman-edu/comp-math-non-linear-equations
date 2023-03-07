@@ -1,5 +1,5 @@
 from typing import Callable, List
-from solve.method.interval import Interval
+from eq.solve.method.interval import Interval
 
 T = float
 

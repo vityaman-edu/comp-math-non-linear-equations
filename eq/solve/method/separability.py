@@ -1,5 +1,4 @@
 from typing import Callable, Iterable, List
-
 from numpy import sign
 from interval import Interval
 

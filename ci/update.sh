@@ -4,7 +4,7 @@ pip freeze > requirements.txt
 echo "[INFO] Successfully updated requirements.txt."
 
 echo "[INFO] Generating docs resources..."
-python3 eq/example.py
+python3 tool.py example
 echo "[INFO] Successfully generated resources."
 
 echo "[INFO] Assembly README.md..."
